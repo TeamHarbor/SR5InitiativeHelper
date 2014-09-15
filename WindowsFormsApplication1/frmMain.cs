@@ -12,6 +12,8 @@ namespace InitiativeHelper
 {
     public partial class frmMain : Form
     {
+        List<clsCharacter> CastList;
+
         public frmMain()
         {
             InitializeComponent();
@@ -22,5 +24,20 @@ namespace InitiativeHelper
             Form create = new frmCharacter();
 
         }
+
+        #region Context Menus
+
+        private void ctmInitiative_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void editCharacterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
     }
 }

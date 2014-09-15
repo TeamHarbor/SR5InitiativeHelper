@@ -31,22 +31,26 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtCharacter = new System.Windows.Forms.TextBox();
-            this.txtPlayer = new System.Windows.Forms.TextBox();
-            this.nudBase = new System.Windows.Forms.NumericUpDown();
+            this.txtCharacterName = new System.Windows.Forms.TextBox();
+            this.txtPlayerName = new System.Windows.Forms.TextBox();
+            this.nudInitBase = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
-            this.nudDice = new System.Windows.Forms.NumericUpDown();
+            this.nudInitDice = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.nudBonus = new System.Windows.Forms.NumericUpDown();
+            this.nudInitBonus = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.chkGoesFirst = new System.Windows.Forms.CheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this.nudBase)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudBonus)).BeginInit();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblCharacterID = new System.Windows.Forms.ToolStripStatusLabel();
+            ((System.ComponentModel.ISupportInitialize)(this.nudInitBase)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudInitDice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudInitBonus)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -76,26 +80,26 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Initiative =";
             // 
-            // txtCharacter
+            // txtCharacterName
             // 
-            this.txtCharacter.Location = new System.Drawing.Point(16, 30);
-            this.txtCharacter.Name = "txtCharacter";
-            this.txtCharacter.Size = new System.Drawing.Size(131, 20);
-            this.txtCharacter.TabIndex = 3;
+            this.txtCharacterName.Location = new System.Drawing.Point(16, 30);
+            this.txtCharacterName.Name = "txtCharacterName";
+            this.txtCharacterName.Size = new System.Drawing.Size(131, 20);
+            this.txtCharacterName.TabIndex = 3;
             // 
-            // txtPlayer
+            // txtPlayerName
             // 
-            this.txtPlayer.Location = new System.Drawing.Point(189, 29);
-            this.txtPlayer.Name = "txtPlayer";
-            this.txtPlayer.Size = new System.Drawing.Size(140, 20);
-            this.txtPlayer.TabIndex = 4;
+            this.txtPlayerName.Location = new System.Drawing.Point(189, 29);
+            this.txtPlayerName.Name = "txtPlayerName";
+            this.txtPlayerName.Size = new System.Drawing.Size(140, 20);
+            this.txtPlayerName.TabIndex = 4;
             // 
-            // nudBase
+            // nudInitBase
             // 
-            this.nudBase.Location = new System.Drawing.Point(92, 73);
-            this.nudBase.Name = "nudBase";
-            this.nudBase.Size = new System.Drawing.Size(35, 20);
-            this.nudBase.TabIndex = 5;
+            this.nudInitBase.Location = new System.Drawing.Point(92, 73);
+            this.nudInitBase.Name = "nudInitBase";
+            this.nudInitBase.Size = new System.Drawing.Size(35, 20);
+            this.nudInitBase.TabIndex = 5;
             // 
             // label4
             // 
@@ -106,12 +110,12 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "+";
             // 
-            // nudDice
+            // nudInitDice
             // 
-            this.nudDice.Location = new System.Drawing.Point(176, 73);
-            this.nudDice.Name = "nudDice";
-            this.nudDice.Size = new System.Drawing.Size(35, 20);
-            this.nudDice.TabIndex = 5;
+            this.nudInitDice.Location = new System.Drawing.Point(176, 73);
+            this.nudInitDice.Name = "nudInitDice";
+            this.nudInitDice.Size = new System.Drawing.Size(35, 20);
+            this.nudInitDice.TabIndex = 5;
             // 
             // label5
             // 
@@ -131,12 +135,12 @@
             this.label6.TabIndex = 6;
             this.label6.Text = "+";
             // 
-            // nudBonus
+            // nudInitBonus
             // 
-            this.nudBonus.Location = new System.Drawing.Point(250, 73);
-            this.nudBonus.Name = "nudBonus";
-            this.nudBonus.Size = new System.Drawing.Size(35, 20);
-            this.nudBonus.TabIndex = 5;
+            this.nudInitBonus.Location = new System.Drawing.Point(250, 73);
+            this.nudInitBonus.Name = "nudInitBonus";
+            this.nudInitBonus.Size = new System.Drawing.Size(35, 20);
+            this.nudInitBonus.TabIndex = 5;
             // 
             // label7
             // 
@@ -184,33 +188,60 @@
             this.chkGoesFirst.Text = "Gets First Initiative";
             this.chkGoesFirst.UseVisualStyleBackColor = true;
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.lblCharacterID});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 148);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(352, 22);
+            this.statusStrip1.TabIndex = 11;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(78, 17);
+            this.toolStripStatusLabel1.Text = "Character ID: ";
+            // 
+            // lblCharacterID
+            // 
+            this.lblCharacterID.Name = "lblCharacterID";
+            this.lblCharacterID.Size = new System.Drawing.Size(34, 17);
+            this.lblCharacterID.Text = "GUID";
+            // 
             // frmCharacter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(352, 148);
+            this.ClientSize = new System.Drawing.Size(352, 170);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.chkGoesFirst);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.nudBonus);
+            this.Controls.Add(this.nudInitBonus);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.nudDice);
+            this.Controls.Add(this.nudInitDice);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.nudBase);
-            this.Controls.Add(this.txtPlayer);
-            this.Controls.Add(this.txtCharacter);
+            this.Controls.Add(this.nudInitBase);
+            this.Controls.Add(this.txtPlayerName);
+            this.Controls.Add(this.txtCharacterName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "frmCharacter";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Edit Character";
-            ((System.ComponentModel.ISupportInitialize)(this.nudBase)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudBonus)).EndInit();
+            this.Load += new System.EventHandler(this.frmCharacter_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.nudInitBase)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudInitDice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudInitBonus)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,18 +252,21 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtCharacter;
-        private System.Windows.Forms.TextBox txtPlayer;
-        private System.Windows.Forms.NumericUpDown nudBase;
+        private System.Windows.Forms.TextBox txtCharacterName;
+        private System.Windows.Forms.TextBox txtPlayerName;
+        private System.Windows.Forms.NumericUpDown nudInitBase;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown nudDice;
+        private System.Windows.Forms.NumericUpDown nudInitDice;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.NumericUpDown nudBonus;
+        private System.Windows.Forms.NumericUpDown nudInitBonus;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.CheckBox chkGoesFirst;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel lblCharacterID;
     }
 }

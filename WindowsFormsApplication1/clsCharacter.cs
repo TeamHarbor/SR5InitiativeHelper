@@ -1,6 +1,6 @@
 ﻿namespace InitiativeHelper
 {
-    class clsCharacter
+    public class clsCharacter
     {
         public readonly System.Guid ID;
         public bool Enabled;

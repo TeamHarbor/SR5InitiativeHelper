@@ -168,6 +168,7 @@
             this.btnSave.TabIndex = 8;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
@@ -175,8 +176,9 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 9;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "Close";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // chkGoesFirst
             // 
@@ -236,7 +238,7 @@
             this.Name = "frmCharacter";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Edit Character";
-            this.Load += new System.EventHandler(this.frmCharacter_Load);
+            this.Shown += new System.EventHandler(this.frmCharacter_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.nudInitBase)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudInitDice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudInitBonus)).EndInit();

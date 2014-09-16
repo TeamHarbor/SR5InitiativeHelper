@@ -48,14 +48,14 @@
             this.btnClearRounds = new System.Windows.Forms.Button();
             this.btnSetRound = new System.Windows.Forms.Button();
             this.ctmInitiative = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cmsCast = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editCharacterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DisableCharacterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spendPointsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.DisableCharacterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsCast = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.statusStrip1.SuspendLayout();
             this.ctmInitiative.SuspendLayout();
             this.SuspendLayout();
@@ -226,17 +226,18 @@
             this.ctmInitiative.Size = new System.Drawing.Size(167, 70);
             this.ctmInitiative.Opening += new System.ComponentModel.CancelEventHandler(this.ctmInitiative_Opening);
             // 
-            // cmsCast
-            // 
-            this.cmsCast.Name = "cmsCast";
-            this.cmsCast.Size = new System.Drawing.Size(61, 4);
-            // 
             // editCharacterToolStripMenuItem
             // 
             this.editCharacterToolStripMenuItem.Name = "editCharacterToolStripMenuItem";
             this.editCharacterToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.editCharacterToolStripMenuItem.Text = "Edit Character";
             this.editCharacterToolStripMenuItem.Click += new System.EventHandler(this.editCharacterToolStripMenuItem_Click);
+            // 
+            // DisableCharacterToolStripMenuItem
+            // 
+            this.DisableCharacterToolStripMenuItem.Name = "DisableCharacterToolStripMenuItem";
+            this.DisableCharacterToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.DisableCharacterToolStripMenuItem.Text = "Disable Character";
             // 
             // spendPointsToolStripMenuItem
             // 
@@ -252,32 +253,31 @@
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(86, 22);
             this.toolStripMenuItem2.Text = "5";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(86, 22);
             this.toolStripMenuItem3.Text = "10";
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(86, 22);
             this.toolStripMenuItem4.Text = "15";
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(86, 22);
             this.toolStripMenuItem5.Text = "20";
             // 
-            // DisableCharacterToolStripMenuItem
+            // cmsCast
             // 
-            this.DisableCharacterToolStripMenuItem.Name = "DisableCharacterToolStripMenuItem";
-            this.DisableCharacterToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.DisableCharacterToolStripMenuItem.Text = "Disable Character";
+            this.cmsCast.Name = "cmsCast";
+            this.cmsCast.Size = new System.Drawing.Size(61, 4);
             // 
             // frmMain
             // 
@@ -302,6 +302,7 @@
             this.Name = "frmMain";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "SR5 Initiative Helper";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ctmInitiative.ResumeLayout(false);

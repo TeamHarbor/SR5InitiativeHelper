@@ -12,17 +12,36 @@ namespace InitiativeHelper
 {
     public partial class frmMain : Form
     {
-        List<clsCharacter> CastList;
+        List<clsCharacter> CastList = new List<clsCharacter>();
 
         public frmMain()
         {
             InitializeComponent();
         }
 
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Form create = new frmCharacter();
+            frmCharacter create = new frmCharacter();
+            clsCharacter character = new clsCharacter();
+            CastList.Add(character);
+            create.Character = character;
+            create.ShowDialog();
+            UpdateCast();
+        }
 
+        public void UpdateCast()
+        {
+            clstCast.Items.Clear();
+
+            foreach (clsCharacter c in CastList)
+            {
+                clstCast.Items.Add(c.Name);
+            }
         }
 
         #region Context Menus

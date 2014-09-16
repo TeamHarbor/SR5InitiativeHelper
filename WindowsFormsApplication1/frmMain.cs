@@ -17,6 +17,16 @@ namespace InitiativeHelper
         public frmMain()
         {
             InitializeComponent();
+            clstCast.DoubleClick += new System.EventHandler(frmMain_clstCast_DoubleClick);
+            clstCast.DisplayMember = "DisplayName";
+            clstInitiative.DisplayMember = "DisplayInitiative";
+        }
+
+        private void frmMain_clstCast_DoubleClick(object sender, EventArgs e)
+        {
+            if (clstCast.SelectedIndex > -1)
+                EditCharacter((clsCharacter)clstCast.SelectedItem);
+
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -26,11 +36,39 @@ namespace InitiativeHelper
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            frmCharacter create = new frmCharacter();
+            AddCharacter();
+        }
+
+        private void AddCharacter()
+        {
             clsCharacter character = new clsCharacter();
             CastList.Add(character);
-            create.Character = character;
-            create.ShowDialog();
+            EditCharacter(character);
+        }
+
+        private void RollInitiative()
+        {
+            Random rnd = new Random();
+            int Initdice;
+            int DiceResult;
+
+            foreach(clsCharacter c in CastList)
+            {
+                Initdice = c.InitDice;
+
+                DiceResult = rnd.Next(Initdice, Initdice * 6);
+
+                c.CurrentInitiative = c.InitBase + c.InitBonus + DiceResult;
+            }
+
+            UpdateInitiative();
+        }
+
+        private void EditCharacter(clsCharacter character)
+        {
+            frmCharacter dialog = new frmCharacter();
+            dialog.Character = character;
+            dialog.ShowDialog();
             UpdateCast();
         }
 
@@ -40,7 +78,21 @@ namespace InitiativeHelper
 
             foreach (clsCharacter c in CastList)
             {
-                clstCast.Items.Add(c.Name);
+                clstCast.Items.Add(c);
+            }
+        }
+
+        public void UpdateInitiative()
+        {
+            clstInitiative.Items.Clear();
+
+            foreach (clsCharacter c in CastList)
+            {
+                if (c.Enabled)
+                    for (int x = c.CurrentInitiative; x > 0; x -= 10)
+                    {
+                        clstInitiative.Items.Add(c);
+                    }
             }
         }
 
@@ -57,6 +109,11 @@ namespace InitiativeHelper
         }
 
         #endregion
+
+        private void btnRoll_Click(object sender, EventArgs e)
+        {
+
+        }
 
     }
 }

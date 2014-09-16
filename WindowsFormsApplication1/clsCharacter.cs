@@ -4,6 +4,16 @@
     {
         public readonly System.Guid ID;
         public bool Enabled;
+        public string DisplayName
+        {
+            get
+            { return Name + " (" + Player + ")"; }
+        }
+        public string DisplayInitiative
+        {
+            get
+            { return CurrentInitiative.ToString(); }
+        }
         public string Name;
         public string Player;
         public int InitBase;
@@ -29,6 +39,8 @@
         {
 
         }
+
+
 
         /// <summary>
         /// Set the selected attribute to the desired value.

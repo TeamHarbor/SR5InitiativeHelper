@@ -62,6 +62,7 @@
             // 
             // clstInitiative
             // 
+            this.clstInitiative.CheckOnClick = true;
             this.clstInitiative.FormattingEnabled = true;
             this.clstInitiative.Location = new System.Drawing.Point(299, 28);
             this.clstInitiative.Name = "clstInitiative";
@@ -95,6 +96,7 @@
             this.btnRoll.TabIndex = 4;
             this.btnRoll.Text = "ROLL!";
             this.btnRoll.UseVisualStyleBackColor = true;
+            this.btnRoll.Click += new System.EventHandler(this.btnRoll_Click);
             // 
             // btnPrevious
             // 
@@ -134,6 +136,7 @@
             // 
             // clstCast
             // 
+            this.clstCast.CheckOnClick = true;
             this.clstCast.FormattingEnabled = true;
             this.clstCast.Location = new System.Drawing.Point(15, 28);
             this.clstCast.Name = "clstCast";

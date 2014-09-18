@@ -20,16 +20,24 @@ namespace InitiativeHelper
             InitializeComponent();
             clstCast.DoubleClick += new System.EventHandler(frmMain_clstCast_DoubleClick);
             clstCast.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(frmMain_clstCast_ItemCheck);
+            clstCast.MouseDown += new System.Windows.Forms.MouseEventHandler(frmMain_clstCast_MouseClick);
             MakeDebugCharacters();
         }
 
         private void frmMain_clstCast_DoubleClick(object sender, EventArgs e)
         {
-            if (clstCast.SelectedIndex > -1)
-                EditCharacter((clsCharacter)clstCast.SelectedItem);
+            //if (clstCast.SelectedIndex > -1)
+            //    EditCharacter((clsCharacter)clstCast.SelectedItem);
+        }
 
-            UpdateCast();
+        private void frmMain_clstCast_MouseClick(object sender, MouseEventArgs e)
+        {
+            clstCast.SelectedIndex = clstCast.IndexFromPoint(e.X, e.Y);
 
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                cmsCast.Show(clstCast, e.Location);
+            }
         }
 
         private void frmMain_clstCast_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -48,9 +56,8 @@ namespace InitiativeHelper
             CastList.Add(new clsCharacter() { Name = "Baddie1", Player = "GM", InitBase = 10, InitDice = 4 });
             CastList.Add(new clsCharacter() { Name = "Baddie2", Player = "GM", InitBase = 15, InitDice = 1, Enabled = false});
             CastList.Add(new clsCharacter() { Name = "Doc", Player = "Troy", InitBase = 8, InitDice = 2 });
-            CastList.Add(new clsCharacter() { Name = "Green Leaf", Player = "Isaac", InitBase = 13, InitDice = 3 });
+            CastList.Add(new clsCharacter() { Name = "Green Leaf", Player = "Isaac", InitBase = 13, InitDice = 3, InitBonus = 8});
             CastList.Add(new clsCharacter() { Name = "Cable", Player = "James", InitBase = 11, InitDice = 3 });
-
             UpdateCast();
         }
 
@@ -69,7 +76,6 @@ namespace InitiativeHelper
             clsCharacter character = new clsCharacter();
             CastList.Add(character);
             EditCharacter(character);
-            UpdateCast();
         }
 
         private void RemoveCharacter(clsCharacter character)
@@ -109,6 +115,7 @@ namespace InitiativeHelper
             frmCharacter dialog = new frmCharacter();
             dialog.Character = character;
             dialog.ShowDialog();
+            UpdateCast();
         }
 
         public void UpdateCast()
@@ -185,12 +192,42 @@ namespace InitiativeHelper
 
         private void removeToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            RemoveCharacter((clsCharacter)clstCast.SelectedItem);
+            if (clstCast.SelectedIndex > -1)
+                RemoveCharacter((clsCharacter)clstCast.SelectedItem);
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            RemoveCharacter((clsCharacter)clstCast.SelectedItem);
+            if (clstCast.SelectedIndex > -1)
+                RemoveCharacter((clsCharacter)clstCast.SelectedItem);
+        }
+
+        private void removeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(clstCast.SelectedIndex > -1)
+                EditCharacter((clsCharacter)clstCast.SelectedItem);
+        }
+
+        private void reRollToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(clstCast.SelectedIndex > -1)
+            {
+                clsCharacter character = (clsCharacter)clstCast.SelectedItem;
+                character.Roll();
+                UpdateInitiative();
+            }                
+        }
+
+        private void setToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (clstCast.SelectedIndex > -1)
+            {
+                clsCharacter character = (clsCharacter)clstCast.SelectedItem;
+                frmSetInitiative dialog = new frmSetInitiative();
+                dialog.Character = character;
+                dialog.ShowDialog();
+                UpdateInitiative();
+            }   
         }
     }
 }

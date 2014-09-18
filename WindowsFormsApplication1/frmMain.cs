@@ -19,14 +19,16 @@ namespace InitiativeHelper
         {
             InitializeComponent();
             clstCast.DoubleClick += new System.EventHandler(frmMain_clstCast_DoubleClick);
-            MakeDebugCharacters();
             clstCast.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(frmMain_clstCast_ItemCheck);
+            MakeDebugCharacters();
         }
 
         private void frmMain_clstCast_DoubleClick(object sender, EventArgs e)
         {
             if (clstCast.SelectedIndex > -1)
                 EditCharacter((clsCharacter)clstCast.SelectedItem);
+
+            UpdateCast();
 
         }
 
@@ -37,6 +39,8 @@ namespace InitiativeHelper
                 character.Enabled = true;
             else
                 character.Enabled = false;
+
+            UpdateInitiative();
         }
 
         private void MakeDebugCharacters()
@@ -65,6 +69,13 @@ namespace InitiativeHelper
             clsCharacter character = new clsCharacter();
             CastList.Add(character);
             EditCharacter(character);
+            UpdateCast();
+        }
+
+        private void RemoveCharacter(clsCharacter character)
+        {
+            CastList.Remove(character);
+            UpdateCast();
         }
 
         private void RollInitiative()
@@ -78,12 +89,26 @@ namespace InitiativeHelper
             UpdateInitiative();
         }
 
+        void EnterInitiative()
+        {
+            frmSetInitiative dialog = new frmSetInitiative();
+
+            foreach (clsCharacter c in CastList)
+            {
+                dialog.Character = c;
+
+                if (c.Enabled)
+                    dialog.ShowDialog();
+            }
+
+            UpdateInitiative();
+        }
+
         private void EditCharacter(clsCharacter character)
         {
             frmCharacter dialog = new frmCharacter();
             dialog.Character = character;
             dialog.ShowDialog();
-            UpdateCast();
         }
 
         public void UpdateCast()
@@ -131,7 +156,7 @@ namespace InitiativeHelper
 
         #region Context Menus
 
-        private void ctmInitiative_Opening(object sender, CancelEventArgs e)
+        private void cmsInitiative_Opening(object sender, CancelEventArgs e)
         {
 
         }
@@ -148,5 +173,24 @@ namespace InitiativeHelper
             RollInitiative();
         }
 
+        private void btnRealDice_Click(object sender, EventArgs e)
+        {
+            EnterInitiative();
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddCharacter();
+        }
+
+        private void removeToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            RemoveCharacter((clsCharacter)clstCast.SelectedItem);
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            RemoveCharacter((clsCharacter)clstCast.SelectedItem);
+        }
     }
 }

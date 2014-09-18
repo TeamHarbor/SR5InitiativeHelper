@@ -13,7 +13,7 @@ namespace InitiativeHelper
         {
             get
             {
-                return "[" + _value.ToString("00") + "] " + _character.DisplayName;
+                return "<" + _value.ToString("00") + "> " + _character.DisplayName;
             }
         }
         private clsCharacter _character;

@@ -58,6 +58,12 @@
     <Compile Include="frmCharacter.Designer.cs">
       <DependentUpon>frmCharacter.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSetInitiative.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetInitiative.Designer.cs">
+      <DependentUpon>frmSetInitiative.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmMain.resx">
@@ -65,6 +71,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCharacter.resx">
       <DependentUpon>frmCharacter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetInitiative.resx">
+      <DependentUpon>frmSetInitiative.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

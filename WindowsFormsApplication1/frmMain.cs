@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace InitiativeHelper
 {
@@ -18,10 +12,16 @@ namespace InitiativeHelper
         public frmMain()
         {
             InitializeComponent();
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(frmMain_FormClosing);
             clstCast.DoubleClick += new System.EventHandler(frmMain_clstCast_DoubleClick);
             clstCast.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(frmMain_clstCast_ItemCheck);
             clstCast.MouseDown += new System.Windows.Forms.MouseEventHandler(frmMain_clstCast_MouseClick);
             MakeDebugCharacters();
+        }
+
+        public void frmMain_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
+        {
+
         }
 
         private void frmMain_clstCast_DoubleClick(object sender, EventArgs e)
@@ -163,11 +163,6 @@ namespace InitiativeHelper
 
         #region Context Menus
 
-        private void cmsInitiative_Opening(object sender, CancelEventArgs e)
-        {
-
-        }
-
         private void editCharacterToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -228,6 +223,18 @@ namespace InitiativeHelper
                 dialog.ShowDialog();
                 UpdateInitiative();
             }   
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAbout about = new frmAbout();
+
+            about.Show();
+        }
+
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

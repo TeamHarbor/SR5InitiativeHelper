@@ -1,6 +1,8 @@
-﻿namespace InitiativeHelper
+﻿using System;
+
+namespace InitiativeHelper
 {
-    public class clsCharacter
+    public class clsCharacter : IComparable<clsCharacter>, IEquatable<clsCharacter>
     {
         public readonly System.Guid ID;
         public bool Enabled;
@@ -31,6 +33,16 @@
             CurrentInitiative = 0;
             Enabled = true;
             Turns = new System.Collections.Generic.List<int>();
+        }
+
+        int IComparable<clsCharacter>.CompareTo(clsCharacter character)
+        {
+            return DisplayName.CompareTo(character.DisplayName);
+        }
+
+        bool IEquatable<clsCharacter>.Equals(clsCharacter character)
+        {
+            return ID.Equals(character.ID);
         }
 
         public override string ToString()

@@ -9,11 +9,6 @@
             get
             { return Name + " (" + Player + ")"; }
         }
-        public string DisplayInitiative
-        {
-            get
-            { return CurrentInitiative.ToString(); }
-        }
         public string Name;
         public string Player;
         public int InitBase;
@@ -21,6 +16,8 @@
         public int InitBonus;
         public bool GoesFirst;
         public int CurrentInitiative;
+        public System.Collections.Generic.List<int> Turns;
+        public int DiceResult;
 
         public clsCharacter()
         {
@@ -33,14 +30,35 @@
             GoesFirst = false;
             CurrentInitiative = 0;
             Enabled = true;
+            Turns = new System.Collections.Generic.List<int>();
+        }
+
+        public override string ToString()
+        {
+            return DisplayName;
         }
 
         public void Roll()
         {
+            System.Random rnd = new System.Random();
 
+            DiceResult = rnd.Next(InitDice, InitDice * 6);
+
+            CurrentInitiative = InitBase + InitBonus + DiceResult;
         }
 
+        public void makeTurns()
+        {
+            Turns.Clear();
 
+            int x = CurrentInitiative;
+            if (Enabled)
+                while (x > 0)
+                {
+                    Turns.Add(x);
+                    x -= 10;
+                }
+        }
 
         /// <summary>
         /// Set the selected attribute to the desired value.

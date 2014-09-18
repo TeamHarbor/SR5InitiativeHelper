@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsCharacter.cs" />
+    <Compile Include="clsTurn.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>

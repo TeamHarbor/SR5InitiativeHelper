@@ -49,7 +49,7 @@ namespace InitiativeHelper
             CastList.Add(new clsCharacter() { Name = "Baddie2", Player = "GM", InitBase = 15, InitDice = 1, Enabled = false});
             CastList.Add(new clsCharacter() { Name = "Doc", Player = "Troy", InitBase = 8, InitDice = 2 });
             CastList.Add(new clsCharacter() { Name = "Green Leaf", Player = "Isaac", InitBase = 13, InitDice = 3 });
-            CastList.Add(new clsCharacter() { Name = "Cable", Player = "GM", InitBase = 11, InitDice = 3 });
+            CastList.Add(new clsCharacter() { Name = "Cable", Player = "James", InitBase = 11, InitDice = 3 });
 
             UpdateCast();
         }

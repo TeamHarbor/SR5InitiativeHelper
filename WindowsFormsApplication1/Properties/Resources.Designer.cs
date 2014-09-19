@@ -59,5 +59,15 @@ namespace InitiativeHelper.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SR5_Gun_Battle_WashedOut {
+            get {
+                object obj = ResourceManager.GetObject("SR5_Gun_Battle_WashedOut", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

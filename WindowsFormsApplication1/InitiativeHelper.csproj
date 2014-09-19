@@ -146,6 +146,12 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SR5_Gun Battle_WashedOut.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SR5_Gun Battle_WashedOut.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

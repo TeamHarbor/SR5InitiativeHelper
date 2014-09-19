@@ -21,6 +21,7 @@ namespace InitiativeHelper
             clstCast.DoubleClick += new System.EventHandler(frmMain_clstCast_DoubleClick);
             clstCast.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(frmMain_clstCast_ItemCheck);
             clstCast.MouseDown += new System.Windows.Forms.MouseEventHandler(frmMain_clstCast_MouseClick);
+            clstInitiative.BackgroundImage = InitiativeHelper.Properties.Resources.SR5_Gun_Battle_WashedOut;
             MakeDebugCharacters();
             lblStatus.Text = "Ready!";
         }

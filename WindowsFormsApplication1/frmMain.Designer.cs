@@ -71,6 +71,7 @@
             this.rdbNothing = new System.Windows.Forms.RadioButton();
             this.rdbManual = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.clstInitiative = new InitiativeHelper.ReadOnlyListBox();
             this.cmsInitiative.SuspendLayout();
             this.cmsCast.SuspendLayout();
@@ -275,7 +276,8 @@
             this.lblRound,
             this.pgbRound,
             this.toolStripStatusLabel2,
-            this.toolStripStatusLabel3});
+            this.toolStripStatusLabel3,
+            this.lblStatus});
             this.statusStrip1.Location = new System.Drawing.Point(0, 289);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(505, 22);
@@ -284,6 +286,7 @@
             // 
             // toolStripStatusLabel1
             // 
+            this.toolStripStatusLabel1.Margin = new System.Windows.Forms.Padding(0, 3, -7, 2);
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(48, 17);
             this.toolStripStatusLabel1.Text = "Round: ";
@@ -304,8 +307,8 @@
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(85, 17);
-            this.toolStripStatusLabel2.Text = "                          ";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(82, 17);
+            this.toolStripStatusLabel2.Text = "                         ";
             // 
             // toolStripStatusLabel3
             // 
@@ -317,7 +320,7 @@
             // btnClearRounds
             // 
             this.btnClearRounds.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnClearRounds.Location = new System.Drawing.Point(210, 291);
+            this.btnClearRounds.Location = new System.Drawing.Point(203, 291);
             this.btnClearRounds.Name = "btnClearRounds";
             this.btnClearRounds.Size = new System.Drawing.Size(46, 19);
             this.btnClearRounds.TabIndex = 9;
@@ -328,7 +331,7 @@
             // btnSetRound
             // 
             this.btnSetRound.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSetRound.Location = new System.Drawing.Point(174, 291);
+            this.btnSetRound.Location = new System.Drawing.Point(167, 291);
             this.btnSetRound.Name = "btnSetRound";
             this.btnSetRound.Size = new System.Drawing.Size(34, 19);
             this.btnSetRound.TabIndex = 9;
@@ -436,6 +439,12 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "Each Round:";
             // 
+            // lblStatus
+            // 
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(75, 17);
+            this.lblStatus.Text = "[StatusLabel]";
+            // 
             // clstInitiative
             // 
             this.clstInitiative.FormattingEnabled = true;
@@ -533,6 +542,7 @@
         private System.Windows.Forms.RadioButton rdbNothing;
         private System.Windows.Forms.RadioButton rdbManual;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ToolStripStatusLabel lblStatus;
     }
 }
 

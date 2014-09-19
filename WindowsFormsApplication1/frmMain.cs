@@ -8,22 +8,35 @@ namespace InitiativeHelper
     {
         List<clsCharacter> CastList = new List<clsCharacter>();
         List<clsTurn> TurnOrder = new List<clsTurn>();
+        bool ResetConfirm = false;
         string EachRoundAction = "nothing";
         int Round = 0;
 
         public frmMain()
         {
             InitializeComponent();
+            lblStatus.Text = "Loading...";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(frmMain_FormClosing);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(frmMain_MouseClick);
             clstCast.DoubleClick += new System.EventHandler(frmMain_clstCast_DoubleClick);
             clstCast.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(frmMain_clstCast_ItemCheck);
             clstCast.MouseDown += new System.Windows.Forms.MouseEventHandler(frmMain_clstCast_MouseClick);
             MakeDebugCharacters();
+            lblStatus.Text = "Ready!";
         }
 
         public void frmMain_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
 
+        }
+
+        public void frmMain_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            if(ResetConfirm)
+            {
+                ResetConfirm = false;
+                lblStatus.Text = "Ready!";
+            }            
         }
 
         private void frmMain_clstCast_DoubleClick(object sender, EventArgs e)
@@ -66,7 +79,7 @@ namespace InitiativeHelper
         private void SetRound(int round)
         {
             Round = round;
-            lblRound.Text = Round.ToString();
+            lblRound.Text = Round.ToString("00");
         }
 
         private void NewRound()
@@ -300,6 +313,8 @@ namespace InitiativeHelper
             Math.Round(progress);
 
             pgbRound.Value = System.Convert.ToInt16(progress);
+
+            lblStatus.Text = ((clsTurn)clstInitiative.SelectedItem).Character.DisplayName + " is up! [Pass " + ((clsTurn)clstInitiative.SelectedItem).Pass + "]";
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -322,7 +337,17 @@ namespace InitiativeHelper
 
         private void btnClearRounds_Click(object sender, EventArgs e)
         {
-            SetRound(0);
+            if(!ResetConfirm)
+            {
+                lblStatus.Text = "Press the Reset button again to confirm";
+                ResetConfirm = true;
+            }
+            else
+            {
+                SetRound(0);
+                lblStatus.Text = "Ready!";
+                ResetConfirm = false;
+            }
         }
     }
 }

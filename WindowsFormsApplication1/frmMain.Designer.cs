@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.clstInitiative = new System.Windows.Forms.CheckedListBox();
             this.cmsInitiative = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editCharacterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DisableCharacterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,25 +62,21 @@
             this.btnSetRound = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rdbRoll = new System.Windows.Forms.RadioButton();
+            this.rdbNothing = new System.Windows.Forms.RadioButton();
+            this.rdbManual = new System.Windows.Forms.RadioButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.clstInitiative = new InitiativeHelper.ReadOnlyListBox();
             this.cmsInitiative.SuspendLayout();
             this.cmsCast.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // clstInitiative
-            // 
-            this.clstInitiative.CheckOnClick = true;
-            this.clstInitiative.FormattingEnabled = true;
-            this.clstInitiative.Location = new System.Drawing.Point(299, 51);
-            this.clstInitiative.Name = "clstInitiative";
-            this.clstInitiative.Size = new System.Drawing.Size(191, 199);
-            this.clstInitiative.TabIndex = 0;
             // 
             // cmsInitiative
             // 
@@ -164,7 +159,7 @@
             // 
             this.btnRoll.Location = new System.Drawing.Point(202, 51);
             this.btnRoll.Name = "btnRoll";
-            this.btnRoll.Size = new System.Drawing.Size(91, 94);
+            this.btnRoll.Size = new System.Drawing.Size(91, 54);
             this.btnRoll.TabIndex = 4;
             this.btnRoll.Text = "ROLL!";
             this.btnRoll.UseVisualStyleBackColor = true;
@@ -178,6 +173,7 @@
             this.btnPrevious.TabIndex = 4;
             this.btnPrevious.Text = "Previous";
             this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
             // btnNext
             // 
@@ -187,6 +183,7 @@
             this.btnNext.TabIndex = 4;
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // label1
             // 
@@ -263,9 +260,9 @@
             // 
             // btnRealDice
             // 
-            this.btnRealDice.Location = new System.Drawing.Point(202, 151);
+            this.btnRealDice.Location = new System.Drawing.Point(202, 111);
             this.btnRealDice.Name = "btnRealDice";
-            this.btnRealDice.Size = new System.Drawing.Size(91, 94);
+            this.btnRealDice.Size = new System.Drawing.Size(91, 56);
             this.btnRealDice.TabIndex = 4;
             this.btnRealDice.Text = "Enter Manually";
             this.btnRealDice.UseVisualStyleBackColor = true;
@@ -300,7 +297,6 @@
             // 
             // pgbRound
             // 
-            this.pgbRound.Maximum = 1000;
             this.pgbRound.Name = "pgbRound";
             this.pgbRound.Size = new System.Drawing.Size(100, 16);
             this.pgbRound.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
@@ -327,6 +323,7 @@
             this.btnClearRounds.TabIndex = 9;
             this.btnClearRounds.Text = "Reset";
             this.btnClearRounds.UseVisualStyleBackColor = true;
+            this.btnClearRounds.Click += new System.EventHandler(this.btnClearRounds_Click);
             // 
             // btnSetRound
             // 
@@ -358,6 +355,13 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // quitToolStripMenuItem
+            // 
+            this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
+            this.quitToolStripMenuItem.Text = "Quit";
+            this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
+            // 
             // editToolStripMenuItem1
             // 
             this.editToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -365,6 +369,12 @@
             this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
             this.editToolStripMenuItem1.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem1.Text = "Edit";
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.settingsToolStripMenuItem.Text = "Settings";
             // 
             // helpToolStripMenuItem
             // 
@@ -377,28 +387,74 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // quitToolStripMenuItem
+            // rdbRoll
             // 
-            this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.quitToolStripMenuItem.Text = "Quit";
-            this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
+            this.rdbRoll.AutoSize = true;
+            this.rdbRoll.Location = new System.Drawing.Point(204, 190);
+            this.rdbRoll.Name = "rdbRoll";
+            this.rdbRoll.Size = new System.Drawing.Size(43, 17);
+            this.rdbRoll.TabIndex = 11;
+            this.rdbRoll.Text = "Roll";
+            this.rdbRoll.UseVisualStyleBackColor = true;
+            this.rdbRoll.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // settingsToolStripMenuItem
+            // rdbNothing
             // 
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.settingsToolStripMenuItem.Text = "Settings";
+            this.rdbNothing.AutoSize = true;
+            this.rdbNothing.Checked = true;
+            this.rdbNothing.Location = new System.Drawing.Point(204, 236);
+            this.rdbNothing.Name = "rdbNothing";
+            this.rdbNothing.Size = new System.Drawing.Size(79, 17);
+            this.rdbNothing.TabIndex = 11;
+            this.rdbNothing.TabStop = true;
+            this.rdbNothing.Text = "Do Nothing";
+            this.rdbNothing.UseVisualStyleBackColor = true;
+            this.rdbNothing.CheckedChanged += new System.EventHandler(this.rdbNothing_CheckedChanged);
+            // 
+            // rdbManual
+            // 
+            this.rdbManual.AutoSize = true;
+            this.rdbManual.Location = new System.Drawing.Point(204, 213);
+            this.rdbManual.Name = "rdbManual";
+            this.rdbManual.Size = new System.Drawing.Size(95, 17);
+            this.rdbManual.TabIndex = 11;
+            this.rdbManual.Text = "Enter Manually";
+            this.rdbManual.UseVisualStyleBackColor = true;
+            this.rdbManual.CheckedChanged += new System.EventHandler(this.rdbManual_CheckedChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(201, 174);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(81, 13);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Each Round:";
+            // 
+            // clstInitiative
+            // 
+            this.clstInitiative.FormattingEnabled = true;
+            this.clstInitiative.Location = new System.Drawing.Point(299, 51);
+            this.clstInitiative.Name = "clstInitiative";
+            this.clstInitiative.ReadOnly = true;
+            this.clstInitiative.Size = new System.Drawing.Size(191, 199);
+            this.clstInitiative.TabIndex = 0;
+            this.clstInitiative.SelectedIndexChanged += new System.EventHandler(this.clstInitiative_SelectedIndexChanged);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(505, 311);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.rdbManual);
+            this.Controls.Add(this.rdbNothing);
+            this.Controls.Add(this.rdbRoll);
             this.Controls.Add(this.btnSetRound);
             this.Controls.Add(this.btnClearRounds);
             this.Controls.Add(this.statusStrip1);
@@ -434,7 +490,7 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckedListBox clstInitiative;
+        private InitiativeHelper.ReadOnlyListBox clstInitiative;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnRoll;
@@ -473,6 +529,10 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.RadioButton rdbRoll;
+        private System.Windows.Forms.RadioButton rdbNothing;
+        private System.Windows.Forms.RadioButton rdbManual;
+        private System.Windows.Forms.Label label3;
     }
 }
 

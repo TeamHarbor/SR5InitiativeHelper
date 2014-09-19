@@ -8,6 +8,8 @@ namespace InitiativeHelper
     {
         List<clsCharacter> CastList = new List<clsCharacter>();
         List<clsTurn> TurnOrder = new List<clsTurn>();
+        string EachRoundAction = "nothing";
+        int Round = 0;
 
         public frmMain()
         {
@@ -61,6 +63,29 @@ namespace InitiativeHelper
             UpdateCast();
         }
 
+        private void SetRound(int round)
+        {
+            Round = round;
+            lblRound.Text = Round.ToString();
+        }
+
+        private void NewRound()
+        {
+            switch(EachRoundAction)
+            {
+                case "roll":
+                    RollInitiative();
+                    break;
+                case "manual":
+                    EnterInitiative();
+                    break;
+                case "nothing":
+                    break;
+                default:
+                    break;
+            }
+        }
+
         private void frmMain_Load(object sender, EventArgs e)
         {
 
@@ -95,7 +120,7 @@ namespace InitiativeHelper
             UpdateInitiative();
         }
 
-        void EnterInitiative()
+        private void EnterInitiative()
         {
             frmSetInitiative dialog = new frmSetInitiative();
 
@@ -235,6 +260,69 @@ namespace InitiativeHelper
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (clstInitiative.Items.Count > 0)
+            {
+                if (clstInitiative.SelectedIndex > -1 && clstInitiative.SelectedIndex < clstInitiative.Items.Count - 1)
+                    clstInitiative.SetSelected(clstInitiative.SelectedIndex + 1, true);
+                else
+                {
+                    SetRound(Round + 1);
+                    NewRound();
+                    clstInitiative.SetSelected(0, true);
+                }
+            }
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (clstInitiative.Items.Count > 0)
+            {
+                if (clstInitiative.SelectedIndex > 0)
+                    clstInitiative.SetSelected(clstInitiative.SelectedIndex - 1, true);
+                else
+                {
+                    SetRound(Round - 1);
+                    clstInitiative.SetSelected(clstInitiative.Items.Count - 1, true);
+                }
+            }
+        }
+
+        private void clstInitiative_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            decimal progress;
+
+            progress = ((System.Convert.ToDecimal(clstInitiative.SelectedIndex) + 1) / System.Convert.ToDecimal(clstInitiative.Items.Count)) * 100;
+
+            Math.Round(progress);
+
+            pgbRound.Value = System.Convert.ToInt16(progress);
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbRoll.Checked)
+                EachRoundAction = "roll";
+        }
+
+        private void rdbManual_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbManual.Checked)
+                EachRoundAction = "manual";
+        }
+
+        private void rdbNothing_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbNothing.Checked)
+                EachRoundAction = "nothing";
+        }
+
+        private void btnClearRounds_Click(object sender, EventArgs e)
+        {
+            SetRound(0);
         }
     }
 }

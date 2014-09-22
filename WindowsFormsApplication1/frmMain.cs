@@ -8,6 +8,7 @@ namespace InitiativeHelper
     {
         List<clsCharacter> CastList = new List<clsCharacter>();
         List<clsTurn> TurnOrder = new List<clsTurn>();
+        bool AltSortMethod = false;
         bool ResetConfirm = false;
         string EachRoundAction = "nothing";
         int Round = 0;
@@ -69,11 +70,19 @@ namespace InitiativeHelper
 
         private void MakeDebugCharacters()
         {
-            CastList.Add(new clsCharacter() { Name = "Baddie1", Player = "GM", InitBase = 10, InitDice = 4 });
-            CastList.Add(new clsCharacter() { Name = "Baddie2", Player = "GM", InitBase = 15, InitDice = 1, Enabled = false});
-            CastList.Add(new clsCharacter() { Name = "Doc", Player = "Troy", InitBase = 8, InitDice = 2 });
-            CastList.Add(new clsCharacter() { Name = "Green Leaf", Player = "Isaac", InitBase = 13, InitDice = 3, InitBonus = 8});
-            CastList.Add(new clsCharacter() { Name = "Cable", Player = "James", InitBase = 11, InitDice = 3 });
+            CastList.Add(new clsCharacter() { Name = "Mike Gear", Player = "Walter", InitBase = 8, InitDice = 1 });
+            CastList.Add(new clsCharacter() { Name = "Hammerhead", Player = "Tyson", InitBase = 8, InitDice = 1 });
+            CastList.Add(new clsCharacter() { Name = "3ther", Player = "Victor", InitBase = 7, InitDice = 1 });
+            CastList.Add(new clsCharacter() { Name = "3ther - Matrix", Player = "Victor", InitBase = 10, InitDice = 4, Enabled = false });
+            CastList.Add(new clsCharacter() { Name = "Green Leaf", Player = "Isaac", InitBase = 11, InitDice = 4 });
+            CastList.Add(new clsCharacter() { Name = "Cable", Player = "James", InitBase = 7, InitDice = 1 });
+            CastList.Add(new clsCharacter() { Name = "Shasta", Player = "Shaun", InitBase = 7, InitDice = 1 });
+            CastList.Add(new clsCharacter() { Name = "Shasta - Hot-Sim", Player = "Shaun", InitBase = 10, InitDice = 4, Enabled = false });
+            CastList.Add(new clsCharacter() { Name = "Shasta - Cold-Sim", Player = "Shaun", InitBase = 10, InitDice = 3, Enabled = false });
+            CastList.Add(new clsCharacter() { Name = "Toni", Player = "RJ", InitBase = 10, InitDice = 1 });
+            CastList.Add(new clsCharacter() { Name = "Toni - Astral", Player = "RJ", InitBase = 12, InitDice = 2, Enabled = false });
+            CastList.Add(new clsCharacter() { Name = "Sayna", Player = "Alex", InitBase = 7, InitDice = 1 });
+            CastList.Add(new clsCharacter() { Name = "Sayna - Astral", Player = "Alex", InitBase = 6, InitDice = 2, Enabled = false });
             UpdateCast();
         }
 
@@ -182,6 +191,10 @@ namespace InitiativeHelper
             {
                 c.makeTurns();
                 int pass = 1;
+
+                if (c.Enabled && c.GoesFirst)
+                    TurnOrder.Add(new clsTurn(c, 0, 0));
+
                 foreach(int t in c.Turns)
                 {
                     TurnOrder.Add(new clsTurn(c, t, pass));
@@ -189,8 +202,10 @@ namespace InitiativeHelper
                 }
             }
 
-            TurnOrder.Sort();
-            TurnOrder.Reverse();
+            if(AltSortMethod)
+                TurnOrder.Sort(TurnSortMethodB);
+            else
+                TurnOrder.Sort(TurnSortMethodA);
 
             clstInitiative.Items.Clear();
 
@@ -199,6 +214,48 @@ namespace InitiativeHelper
                 clstInitiative.Items.Add(t);
             }
         }
+
+        /// <summary>
+        /// Sort turns by TURN VALUE alone
+        /// </summary>
+        /// <param name="TurnA"></param>
+        /// <param name="TurnB"></param>
+        /// <returns></returns>
+        int TurnSortMethodB(clsTurn TurnA, clsTurn TurnB)
+        {
+            if (TurnA.Value < TurnB.Value)
+                return 1;
+            else if (TurnA.Value > TurnB.Value)
+                return -1;
+            else
+                return 0;
+        }
+
+        /// <summary>
+        /// Sort turns by PASS(Ascending) then by TURN VALUE(Descending)
+        /// </summary>
+        /// <param name="TurnA"></param>
+        /// <param name="TurnB"></param>
+        /// <returns></returns>
+        int TurnSortMethodA(clsTurn TurnA, clsTurn TurnB)
+        {
+            //Sort by PASS first, Ascending
+            if (TurnA.Pass < TurnB.Pass)
+                return -1;
+            else if (TurnA.Pass > TurnB.Pass)
+                return 1;
+            else
+            {
+                //If both turns are on the same PASS, then sort by VALUE, descending
+                if (TurnA.Value < TurnB.Value)
+                    return 1;
+                else if (TurnA.Value > TurnB.Value)
+                    return -1;
+                else
+                    return 0;
+            }
+        }
+
 
         #region Context Menus
 
@@ -282,12 +339,15 @@ namespace InitiativeHelper
             {
                 if (clstInitiative.SelectedIndex > -1 && clstInitiative.SelectedIndex < clstInitiative.Items.Count - 1)
                     clstInitiative.SetSelected(clstInitiative.SelectedIndex + 1, true);
-                else
+                //Only increment the round if actually moving from the last index back to the first
+                else if(clstInitiative.SelectedIndex != -1)
                 {
                     SetRound(Round + 1);
                     NewRound();
                     clstInitiative.SetSelected(0, true);
                 }
+                else
+                    clstInitiative.SetSelected(0, true);
             }
         }
 
@@ -349,6 +409,16 @@ namespace InitiativeHelper
                 lblStatus.Text = "Ready!";
                 ResetConfirm = false;
             }
+        }
+
+        private void chbIgnorePass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbIgnorePass.Checked)
+                AltSortMethod = true;
+            else
+                AltSortMethod = false;
+
+            UpdateInitiative();
         }
     }
 }

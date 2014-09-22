@@ -54,7 +54,12 @@ namespace InitiativeHelper
         {
             System.Random rnd = new System.Random();
 
-            DiceResult = rnd.Next(InitDice, InitDice * 6);
+            DiceResult = 0;
+
+            for (int x = 0; x < InitDice; x++)
+            {
+                DiceResult += rnd.Next(1,6);
+            }
 
             CurrentInitiative = InitBase + InitBonus + DiceResult;
         }

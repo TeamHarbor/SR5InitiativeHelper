@@ -9,11 +9,11 @@ namespace InitiativeHelper
             return this.ToString().CompareTo(Turn.ToString());
         }
 
-        private string DisplayName
+        public string DisplayName
         {
             get
             {
-                return "<" + _value.ToString("00") + "> " + _character.DisplayName;
+                return _value.ToString("00") + " > " + _character.DisplayName;
             }
         }
         private clsCharacter _character;

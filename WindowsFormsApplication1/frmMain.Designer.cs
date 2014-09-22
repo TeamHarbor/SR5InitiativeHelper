@@ -58,6 +58,7 @@
             this.pgbRound = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnClearRounds = new System.Windows.Forms.Button();
             this.btnSetRound = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -71,8 +72,8 @@
             this.rdbNothing = new System.Windows.Forms.RadioButton();
             this.rdbManual = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
-            this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.clstInitiative = new InitiativeHelper.ReadOnlyListBox();
+            this.chbIgnorePass = new System.Windows.Forms.CheckBox();
             this.cmsInitiative.SuspendLayout();
             this.cmsCast.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -317,6 +318,12 @@
             this.toolStripStatusLabel3.Size = new System.Drawing.Size(10, 17);
             this.toolStripStatusLabel3.Text = "|";
             // 
+            // lblStatus
+            // 
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(75, 17);
+            this.lblStatus.Text = "[StatusLabel]";
+            // 
             // btnClearRounds
             // 
             this.btnClearRounds.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -439,14 +446,9 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "Each Round:";
             // 
-            // lblStatus
-            // 
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(75, 17);
-            this.lblStatus.Text = "[StatusLabel]";
-            // 
             // clstInitiative
             // 
+            this.clstInitiative.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.clstInitiative.FormattingEnabled = true;
             this.clstInitiative.Location = new System.Drawing.Point(299, 51);
             this.clstInitiative.Name = "clstInitiative";
@@ -455,11 +457,23 @@
             this.clstInitiative.TabIndex = 0;
             this.clstInitiative.SelectedIndexChanged += new System.EventHandler(this.clstInitiative_SelectedIndexChanged);
             // 
+            // chbIgnorePass
+            // 
+            this.chbIgnorePass.AutoSize = true;
+            this.chbIgnorePass.Location = new System.Drawing.Point(377, 31);
+            this.chbIgnorePass.Name = "chbIgnorePass";
+            this.chbIgnorePass.Size = new System.Drawing.Size(116, 17);
+            this.chbIgnorePass.TabIndex = 13;
+            this.chbIgnorePass.Text = "Ignore PASS value";
+            this.chbIgnorePass.UseVisualStyleBackColor = true;
+            this.chbIgnorePass.CheckedChanged += new System.EventHandler(this.chbIgnorePass_CheckedChanged);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(505, 311);
+            this.Controls.Add(this.chbIgnorePass);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.rdbManual);
             this.Controls.Add(this.rdbNothing);
@@ -543,6 +557,7 @@
         private System.Windows.Forms.RadioButton rdbManual;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolStripStatusLabel lblStatus;
+        private System.Windows.Forms.CheckBox chbIgnorePass;
     }
 }
 

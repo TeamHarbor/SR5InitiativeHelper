@@ -70,12 +70,12 @@ namespace InitiativeHelper
 
         private void MakeDebugCharacters()
         {
-            CastList.Add(new clsCharacter() { Name = "Mike Gear", Player = "Walter", InitBase = 8, InitDice = 1 });
+            CastList.Add(new clsCharacter() { Name = "Brian", Player = "Bryan", InitBase =7, InitDice = 1 });
             CastList.Add(new clsCharacter() { Name = "Hammerhead", Player = "Tyson", InitBase = 8, InitDice = 1 });
-            CastList.Add(new clsCharacter() { Name = "3ther", Player = "Victor", InitBase = 7, InitDice = 1 });
-            CastList.Add(new clsCharacter() { Name = "3ther - Matrix", Player = "Victor", InitBase = 10, InitDice = 4, Enabled = false });
-            CastList.Add(new clsCharacter() { Name = "Green Leaf", Player = "Isaac", InitBase = 11, InitDice = 4 });
-            CastList.Add(new clsCharacter() { Name = "Cable", Player = "James", InitBase = 7, InitDice = 1 });
+            CastList.Add(new clsCharacter() { Name = "Aundair", Player = "Victor", InitBase = 8, InitDice = 1 });
+            CastList.Add(new clsCharacter() { Name = "Gearbox", Player = "Eric", InitBase = 8, InitDice = 1 });
+            CastList.Add(new clsCharacter() { Name = "Gearbox - Matrix", Player = "Eric", InitBase = 7, InitDice = 4 });
+            CastList.Add(new clsCharacter() { Name = "Sage", Player = "James", InitBase = 7, InitDice = 1 });
             CastList.Add(new clsCharacter() { Name = "Shasta", Player = "Shaun", InitBase = 7, InitDice = 1 });
             CastList.Add(new clsCharacter() { Name = "Shasta - Hot-Sim", Player = "Shaun", InitBase = 10, InitDice = 4, Enabled = false });
             CastList.Add(new clsCharacter() { Name = "Shasta - Cold-Sim", Player = "Shaun", InitBase = 10, InitDice = 3, Enabled = false });

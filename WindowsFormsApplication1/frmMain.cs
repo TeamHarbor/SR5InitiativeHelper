@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Xml;
 
 namespace InitiativeHelper
 {
     public partial class frmMain : Form
     {
+        XmlDocument CastFile = new XmlDocument();
         List<clsCharacter> CastList = new List<clsCharacter>();
         List<clsTurn> TurnOrder = new List<clsTurn>();
         bool AltSortMethod = false;
@@ -16,7 +18,8 @@ namespace InitiativeHelper
         public frmMain()
         {
             InitializeComponent();
-            lblStatus.Text = "Loading...";
+            lblStatus.Text = "Loading Cast";
+
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(frmMain_FormClosing);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(frmMain_MouseClick);
             clstCast.DoubleClick += new System.EventHandler(frmMain_clstCast_DoubleClick);
@@ -419,6 +422,46 @@ namespace InitiativeHelper
                 AltSortMethod = false;
 
             UpdateInitiative();
+        }
+
+        private void cmsCast_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            
+        }
+
+        private void DisableCharacterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        //Spend 5 Points
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            clsTurn selected = (clsTurn)clstInitiative.SelectedItem;
+
+            if (selected != null)
+            {
+                selected.Character.Spend(5);
+                UpdateInitiative();
+            }
+        }
+
+        private void btnSetRound_Click(object sender, EventArgs e)
+        {
+            frmSetRound Dialog = new frmSetRound(Round);
+            Dialog.ShowDialog();
+            SetRound(System.Convert.ToInt16(Dialog.newRoundValue));
+            Dialog.Dispose();
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

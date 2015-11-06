@@ -51,6 +51,7 @@
             this.removeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.reRollToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.disableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnRealDice = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -63,6 +64,8 @@
             this.btnSetRound = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,12 +75,20 @@
             this.rdbNothing = new System.Windows.Forms.RadioButton();
             this.rdbManual = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
-            this.clstInitiative = new InitiativeHelper.ReadOnlyListBox();
             this.chbIgnorePass = new System.Windows.Forms.CheckBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.clstInitiative = new InitiativeHelper.ReadOnlyListBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.cmsInitiative.SuspendLayout();
             this.cmsCast.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmsInitiative
@@ -87,20 +98,21 @@
             this.DisableCharacterToolStripMenuItem,
             this.spendPointsToolStripMenuItem});
             this.cmsInitiative.Name = "ctmInitiative";
-            this.cmsInitiative.Size = new System.Drawing.Size(144, 70);
+            this.cmsInitiative.Size = new System.Drawing.Size(157, 70);
             // 
             // editCharacterToolStripMenuItem
             // 
             this.editCharacterToolStripMenuItem.Name = "editCharacterToolStripMenuItem";
-            this.editCharacterToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.editCharacterToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.editCharacterToolStripMenuItem.Text = "Edit";
             this.editCharacterToolStripMenuItem.Click += new System.EventHandler(this.editCharacterToolStripMenuItem_Click);
             // 
             // DisableCharacterToolStripMenuItem
             // 
             this.DisableCharacterToolStripMenuItem.Name = "DisableCharacterToolStripMenuItem";
-            this.DisableCharacterToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
-            this.DisableCharacterToolStripMenuItem.Text = "Disable";
+            this.DisableCharacterToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.DisableCharacterToolStripMenuItem.Text = "Toggle Enabled";
+            this.DisableCharacterToolStripMenuItem.Click += new System.EventHandler(this.DisableCharacterToolStripMenuItem_Click);
             // 
             // spendPointsToolStripMenuItem
             // 
@@ -110,7 +122,7 @@
             this.toolStripMenuItem4,
             this.toolStripMenuItem5});
             this.spendPointsToolStripMenuItem.Name = "spendPointsToolStripMenuItem";
-            this.spendPointsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.spendPointsToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.spendPointsToolStripMenuItem.Text = "Spend Points";
             // 
             // toolStripMenuItem2
@@ -118,6 +130,7 @@
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(86, 22);
             this.toolStripMenuItem2.Text = "5";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripMenuItem3
             // 
@@ -190,7 +203,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 32);
+            this.label1.Location = new System.Drawing.Point(3, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 13);
             this.label1.TabIndex = 5;
@@ -199,7 +212,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(296, 32);
+            this.label2.Location = new System.Drawing.Point(3, 3);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 6;
@@ -209,7 +222,7 @@
             // 
             this.clstCast.CheckOnClick = true;
             this.clstCast.FormattingEnabled = true;
-            this.clstCast.Location = new System.Drawing.Point(15, 51);
+            this.clstCast.Location = new System.Drawing.Point(0, 19);
             this.clstCast.Name = "clstCast";
             this.clstCast.Size = new System.Drawing.Size(181, 199);
             this.clstCast.TabIndex = 7;
@@ -221,44 +234,52 @@
             this.removeToolStripMenuItem,
             this.removeToolStripMenuItem1,
             this.reRollToolStripMenuItem,
-            this.setToolStripMenuItem});
+            this.setToolStripMenuItem,
+            this.disableToolStripMenuItem});
             this.cmsCast.Name = "cmsCast";
-            this.cmsCast.Size = new System.Drawing.Size(118, 114);
+            this.cmsCast.Size = new System.Drawing.Size(157, 136);
+            this.cmsCast.Opening += new System.ComponentModel.CancelEventHandler(this.cmsCast_Opening);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.editToolStripMenuItem.Text = "Add";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // removeToolStripMenuItem
             // 
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.removeToolStripMenuItem.Text = "Edit";
             this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
             // 
             // removeToolStripMenuItem1
             // 
             this.removeToolStripMenuItem1.Name = "removeToolStripMenuItem1";
-            this.removeToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
+            this.removeToolStripMenuItem1.Size = new System.Drawing.Size(156, 22);
             this.removeToolStripMenuItem1.Text = "Remove";
             this.removeToolStripMenuItem1.Click += new System.EventHandler(this.removeToolStripMenuItem1_Click);
             // 
             // reRollToolStripMenuItem
             // 
             this.reRollToolStripMenuItem.Name = "reRollToolStripMenuItem";
-            this.reRollToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.reRollToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.reRollToolStripMenuItem.Text = "Re-Roll";
             this.reRollToolStripMenuItem.Click += new System.EventHandler(this.reRollToolStripMenuItem_Click);
             // 
             // setToolStripMenuItem
             // 
             this.setToolStripMenuItem.Name = "setToolStripMenuItem";
-            this.setToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.setToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.setToolStripMenuItem.Text = "Set";
             this.setToolStripMenuItem.Click += new System.EventHandler(this.setToolStripMenuItem_Click);
+            // 
+            // disableToolStripMenuItem
+            // 
+            this.disableToolStripMenuItem.Name = "disableToolStripMenuItem";
+            this.disableToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.disableToolStripMenuItem.Text = "Toggle Enabled";
             // 
             // btnRealDice
             // 
@@ -279,9 +300,9 @@
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel3,
             this.lblStatus});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 289);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 419);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(505, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(511, 22);
             this.statusStrip1.TabIndex = 8;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -327,7 +348,7 @@
             // btnClearRounds
             // 
             this.btnClearRounds.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnClearRounds.Location = new System.Drawing.Point(203, 291);
+            this.btnClearRounds.Location = new System.Drawing.Point(203, 421);
             this.btnClearRounds.Name = "btnClearRounds";
             this.btnClearRounds.Size = new System.Drawing.Size(46, 19);
             this.btnClearRounds.TabIndex = 9;
@@ -338,12 +359,13 @@
             // btnSetRound
             // 
             this.btnSetRound.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSetRound.Location = new System.Drawing.Point(167, 291);
+            this.btnSetRound.Location = new System.Drawing.Point(167, 421);
             this.btnSetRound.Name = "btnSetRound";
             this.btnSetRound.Size = new System.Drawing.Size(34, 19);
             this.btnSetRound.TabIndex = 9;
             this.btnSetRound.Text = "Set";
             this.btnSetRound.UseVisualStyleBackColor = true;
+            this.btnSetRound.Click += new System.EventHandler(this.btnSetRound_Click);
             // 
             // menuStrip1
             // 
@@ -353,23 +375,39 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(505, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(511, 24);
             this.menuStrip1.TabIndex = 10;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripMenuItem,
+            this.saveToolStripMenuItem,
             this.quitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Text = "&Open";
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Text = "&Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
-            this.quitToolStripMenuItem.Text = "Quit";
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.quitToolStripMenuItem.Text = "&Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem1
@@ -383,7 +421,7 @@
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             // 
             // helpToolStripMenuItem
@@ -446,34 +484,86 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "Each Round:";
             // 
+            // chbIgnorePass
+            // 
+            this.chbIgnorePass.AutoSize = true;
+            this.chbIgnorePass.Location = new System.Drawing.Point(72, 2);
+            this.chbIgnorePass.Name = "chbIgnorePass";
+            this.chbIgnorePass.Size = new System.Drawing.Size(118, 17);
+            this.chbIgnorePass.TabIndex = 13;
+            this.chbIgnorePass.Text = "Cascading Initiative";
+            this.chbIgnorePass.UseVisualStyleBackColor = true;
+            this.chbIgnorePass.CheckedChanged += new System.EventHandler(this.chbIgnorePass_CheckedChanged);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(0, 17);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox1.Size = new System.Drawing.Size(475, 104);
+            this.textBox1.TabIndex = 14;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 2);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Notes";
+            // 
             // clstInitiative
             // 
+            this.clstInitiative.ContextMenuStrip = this.cmsInitiative;
             this.clstInitiative.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.clstInitiative.FormattingEnabled = true;
-            this.clstInitiative.Location = new System.Drawing.Point(299, 51);
+            this.clstInitiative.Location = new System.Drawing.Point(0, 19);
             this.clstInitiative.Name = "clstInitiative";
-            this.clstInitiative.ReadOnly = true;
+            this.clstInitiative.ReadOnly = false;
             this.clstInitiative.Size = new System.Drawing.Size(191, 199);
             this.clstInitiative.TabIndex = 0;
             this.clstInitiative.SelectedIndexChanged += new System.EventHandler(this.clstInitiative_SelectedIndexChanged);
             // 
-            // chbIgnorePass
+            // panel1
             // 
-            this.chbIgnorePass.AutoSize = true;
-            this.chbIgnorePass.Location = new System.Drawing.Point(377, 31);
-            this.chbIgnorePass.Name = "chbIgnorePass";
-            this.chbIgnorePass.Size = new System.Drawing.Size(116, 17);
-            this.chbIgnorePass.TabIndex = 13;
-            this.chbIgnorePass.Text = "Ignore PASS value";
-            this.chbIgnorePass.UseVisualStyleBackColor = true;
-            this.chbIgnorePass.CheckedChanged += new System.EventHandler(this.chbIgnorePass_CheckedChanged);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Location = new System.Drawing.Point(15, 285);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(475, 121);
+            this.panel1.TabIndex = 16;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.clstCast);
+            this.panel2.Location = new System.Drawing.Point(15, 35);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(181, 218);
+            this.panel2.TabIndex = 17;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.chbIgnorePass);
+            this.panel3.Controls.Add(this.clstInitiative);
+            this.panel3.Location = new System.Drawing.Point(299, 35);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(191, 218);
+            this.panel3.TabIndex = 18;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(505, 311);
-            this.Controls.Add(this.chbIgnorePass);
+            this.BackgroundImage = global::InitiativeHelper.Properties.Resources.SR5_Gun_Battle_WashedOut;
+            this.ClientSize = new System.Drawing.Size(511, 441);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.rdbManual);
             this.Controls.Add(this.rdbNothing);
@@ -482,16 +572,12 @@
             this.Controls.Add(this.btnClearRounds);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.clstCast);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnPrevious);
             this.Controls.Add(this.btnRealDice);
             this.Controls.Add(this.btnRoll);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.clstInitiative);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
@@ -506,6 +592,12 @@
             this.statusStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -558,6 +650,14 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolStripStatusLabel lblStatus;
         private System.Windows.Forms.CheckBox chbIgnorePass;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem disableToolStripMenuItem;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
     }
 }
 

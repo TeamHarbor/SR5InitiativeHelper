@@ -86,6 +86,12 @@
     <Compile Include="frmSetInitiative.Designer.cs">
       <DependentUpon>frmSetInitiative.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSetRound.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetRound.Designer.cs">
+      <DependentUpon>frmSetRound.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReadOnlyListBox.cs">
@@ -105,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSetInitiative.resx">
       <DependentUpon>frmSetInitiative.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetRound.resx">
+      <DependentUpon>frmSetRound.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

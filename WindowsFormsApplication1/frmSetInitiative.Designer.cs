@@ -31,12 +31,14 @@
             this.nudInitiative = new System.Windows.Forms.NumericUpDown();
             this.lblMessage = new System.Windows.Forms.Label();
             this.btnAccept = new System.Windows.Forms.Button();
+            this.lblEquation = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudInitiative)).BeginInit();
             this.SuspendLayout();
             // 
             // nudInitiative
             // 
-            this.nudInitiative.Location = new System.Drawing.Point(93, 46);
+            this.nudInitiative.Location = new System.Drawing.Point(176, 46);
             this.nudInitiative.Minimum = new decimal(new int[] {
             1,
             0,
@@ -62,7 +64,7 @@
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(198, 43);
+            this.btnAccept.Location = new System.Drawing.Point(258, 43);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(75, 23);
             this.btnAccept.TabIndex = 2;
@@ -70,12 +72,32 @@
             this.btnAccept.UseVisualStyleBackColor = true;
             this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
+            // lblEquation
+            // 
+            this.lblEquation.Location = new System.Drawing.Point(12, 43);
+            this.lblEquation.Name = "lblEquation";
+            this.lblEquation.Size = new System.Drawing.Size(139, 23);
+            this.lblEquation.TabIndex = 3;
+            this.lblEquation.Text = "label1";
+            this.lblEquation.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(157, 48);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(13, 13);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "=";
+            // 
             // frmSetInitiative
             // 
             this.AcceptButton = this.btnAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 78);
+            this.ClientSize = new System.Drawing.Size(384, 105);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblEquation);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.nudInitiative);
@@ -98,5 +120,7 @@
         private System.Windows.Forms.NumericUpDown nudInitiative;
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.Button btnAccept;
+        private System.Windows.Forms.Label lblEquation;
+        private System.Windows.Forms.Label label5;
     }
 }

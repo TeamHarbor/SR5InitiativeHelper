@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("SR5 Initiative Helper")]
-[assembly: AssemblyDescription("Initiative generator and tracking assistant for use with the Shadowrun 5th Edition Role Playing Game")]
+[assembly: AssemblyDescription("Initiative generator and tracking assistant for use with the Shadowrun 5th Edition Role Playing Game // The Topps Company, Inc. has sole ownership of the names, logo, artwork, marks, photographs, sounds, audio, video and/or any proprietary material used in connection with the game Shadowrun. The Topps Company, Inc. has granted permission to Team Harbor to use such names, logos, artwork, marks and/or any proprietary materials for promotional and informational purposes on its website but does not endorse, and is not affiliated with Team Harbor in any official capacity whatsoever. // Licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("GHCMC")]
+[assembly: AssemblyCompany("Team Harbor")]
 [assembly: AssemblyProduct("SR5 Initiative Helper")]
-[assembly: AssemblyCopyright("Copyright © Derek Peterson 2014")]
+[assembly: AssemblyCopyright("Program Copyright © Derek Peterson 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

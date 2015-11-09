@@ -26,13 +26,43 @@ namespace InitiativeHelper
             clstCast.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(frmMain_clstCast_ItemCheck);
             clstCast.MouseDown += new System.Windows.Forms.MouseEventHandler(frmMain_clstCast_MouseClick);
             clstInitiative.BackgroundImage = InitiativeHelper.Properties.Resources.SR5_Gun_Battle_WashedOut;
-            MakeDebugCharacters();
             lblStatus.Text = "Ready!";
         }
 
         public void frmMain_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
+            if (!ConfirmClose())
+            {
+                e.Cancel = true;
+            }
+        }
 
+        bool ConfirmClose()
+        {
+            bool result;
+
+            if (true) // Will confirm unsaved state in future release
+            {
+                DialogResult confirm = MessageBox.Show("Are you sure you want to exit?", "Wait!", MessageBoxButtons.YesNo);
+
+                switch (confirm)
+                {
+                    case DialogResult.Yes:
+                        //ApplyChanges(); //Unused in this form
+                        result = true;
+                        break;
+                    case DialogResult.No:
+                        result = false;
+                        break;
+                    default:
+                        result = false;
+                        break;
+                }
+            }
+            else
+                result = true;
+
+            return result;
         }
 
         public void frmMain_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -479,6 +509,11 @@ namespace InitiativeHelper
                     MessageBox.Show("Cast list saving has not yet been configured. This will be added in a future release.");
                 }
             }
+        }
+
+        private void generateDebugCastToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MakeDebugCharacters();
         }
     }
 }

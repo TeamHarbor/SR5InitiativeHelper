@@ -24,6 +24,7 @@ namespace InitiativeHelper
         {
             lblMessage.Text = "Please enter an initiative for " + Character.DisplayName;
             this.Text = "Set Initiative for " + Character.DisplayName;
+            lblEquation.Text = Character.InitBase + " + " + Character.InitDice + "d6 + " + Character.InitBonus;
             nudInitiative.Focus();
             nudInitiative.Select(0, 5);
             unsafeClose = true;

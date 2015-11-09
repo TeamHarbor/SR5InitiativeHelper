@@ -3,7 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="last_save" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">%HOME%</Value>
+    </Setting>
+    <Setting Name="last_open" Type="System.String" Scope="User">
+      <Value Profile="(Default)">%HOME%</Value>
     </Setting>
   </Settings>
 </SettingsFile>

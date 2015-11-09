@@ -2,6 +2,7 @@
 
 namespace InitiativeHelper
 {
+    [Serializable]
     public class clsCharacter : IComparable<clsCharacter>, IEquatable<clsCharacter>
     {
         public readonly System.Guid ID;

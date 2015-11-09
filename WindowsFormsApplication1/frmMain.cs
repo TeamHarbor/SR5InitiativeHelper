@@ -73,7 +73,7 @@ namespace InitiativeHelper
 
         private void MakeDebugCharacters()
         {
-            CastList.Add(new clsCharacter() { Name = "Brian", Player = "Bryan", InitBase =7, InitDice = 1 });
+            CastList.Add(new clsCharacter() { Name = "Brian", Player = "Bryan", InitBase = 7, InitDice = 1 });
             CastList.Add(new clsCharacter() { Name = "Hammerhead", Player = "Tyson", InitBase = 8, InitDice = 1 });
             CastList.Add(new clsCharacter() { Name = "Aundair", Player = "Victor", InitBase = 8, InitDice = 1 });
             CastList.Add(new clsCharacter() { Name = "Gearbox", Player = "Eric", InitBase = 8, InitDice = 1 });
@@ -461,7 +461,24 @@ namespace InitiativeHelper
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            string fn;
+            saveFileDialog1.InitialDirectory = Properties.Settings.Default.last_save;
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                System.Xml.Serialization.XmlSerializer serializer;
+                saveFileDialog1.AddExtension = true;
+                saveFileDialog1.DefaultExt = ".cast";
+                saveFileDialog1.Title = "Save Cast List";
+                fn = saveFileDialog1.FileName;
+                if (!System.IO.File.Exists(fn))
+                {
+                    MessageBox.Show("Cast list saving has not yet been configured. This will be added in a future release.");
+                }
+                else
+                {
+                    MessageBox.Show("Cast list saving has not yet been configured. This will be added in a future release.");
+                }
+            }
         }
     }
 }

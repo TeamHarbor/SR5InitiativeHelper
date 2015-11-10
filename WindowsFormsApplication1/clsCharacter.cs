@@ -116,13 +116,7 @@ namespace InitiativeHelper
 
         public void Spend(int Amount)
         {
-            if (Turns.Count > 0)
-            {
-                for (int i = 0; i < Turns.Count; i++)
-                {
-                    Turns[i] -= Amount;
-                }
-            }
+            Set("init.current", System.Convert.ToString(CurrentInitiative - Amount));
         }
     }
 }

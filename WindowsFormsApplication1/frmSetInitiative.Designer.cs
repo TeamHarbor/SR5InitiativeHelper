@@ -117,10 +117,10 @@
 
         #endregion
 
-        private System.Windows.Forms.NumericUpDown nudInitiative;
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.Label lblEquation;
         private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.NumericUpDown nudInitiative;
     }
 }

@@ -294,7 +294,8 @@ namespace InitiativeHelper
 
         private void editCharacterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if (clstInitiative.SelectedIndex > -1)
+                EditCharacter(((clsTurn)clstInitiative.SelectedItem).Character);
         }
 
         #endregion
@@ -461,7 +462,11 @@ namespace InitiativeHelper
 
         private void DisableCharacterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if (clstInitiative.SelectedIndex > -1)
+            {
+                ((clsTurn)clstInitiative.SelectedItem).Character.Enabled = false;
+                UpdateInitiative();
+            }
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -514,6 +519,28 @@ namespace InitiativeHelper
         private void generateDebugCastToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MakeDebugCharacters();
+        }
+
+        private void setToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            if (clstInitiative.SelectedIndex > -1)
+            {
+                clsCharacter character = ((clsTurn)clstInitiative.SelectedItem).Character;
+                frmSetInitiative dialog = new frmSetInitiative();
+                dialog.Character = character;
+                dialog.nudInitiative.Value = character.CurrentInitiative;
+                dialog.ShowDialog();
+                UpdateInitiative();
+            }
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            if (clstInitiative.SelectedIndex > -1)
+            {
+                ((clsTurn)clstInitiative.SelectedItem).Character.Spend(10);
+                UpdateInitiative();
+            }
         }
     }
 }

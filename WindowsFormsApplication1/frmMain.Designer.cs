@@ -30,13 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.cmsInitiative = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.editCharacterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DisableCharacterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem_Init = new System.Windows.Forms.ToolStripMenuItem();
+            this.disableToolStripMenuItem_Init = new System.Windows.Forms.ToolStripMenuItem();
             this.spendPointsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnRoll = new System.Windows.Forms.Button();
@@ -46,12 +44,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.clstCast = new System.Windows.Forms.CheckedListBox();
             this.cmsCast = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.reRollToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.disableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItem_Cast = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem_Cast = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeToolStripMenuItem_Cast = new System.Windows.Forms.ToolStripMenuItem();
+            this.reRollToolStripMenuItem_Cast = new System.Windows.Forms.ToolStripMenuItem();
+            this.setToolStripMenuItem_Cast = new System.Windows.Forms.ToolStripMenuItem();
+            this.disableToolStripMenuItem_Cast = new System.Windows.Forms.ToolStripMenuItem();
             this.btnRealDice = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -83,8 +81,9 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.clstInitiative = new InitiativeHelper.ReadOnlyListBox();
             this.generateDebugCastToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clstInitiative = new InitiativeHelper.ReadOnlyListBox();
             this.cmsInitiative.SuspendLayout();
             this.cmsCast.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -97,61 +96,49 @@
             // cmsInitiative
             // 
             this.cmsInitiative.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editCharacterToolStripMenuItem,
-            this.DisableCharacterToolStripMenuItem,
+            this.editToolStripMenuItem_Init,
+            this.setToolStripMenuItem,
+            this.disableToolStripMenuItem_Init,
             this.spendPointsToolStripMenuItem});
             this.cmsInitiative.Name = "ctmInitiative";
-            this.cmsInitiative.Size = new System.Drawing.Size(156, 70);
+            this.cmsInitiative.Size = new System.Drawing.Size(185, 92);
             // 
-            // editCharacterToolStripMenuItem
+            // editToolStripMenuItem_Init
             // 
-            this.editCharacterToolStripMenuItem.Name = "editCharacterToolStripMenuItem";
-            this.editCharacterToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.editCharacterToolStripMenuItem.Text = "Edit";
-            this.editCharacterToolStripMenuItem.Click += new System.EventHandler(this.editCharacterToolStripMenuItem_Click);
+            this.editToolStripMenuItem_Init.Name = "editToolStripMenuItem_Init";
+            this.editToolStripMenuItem_Init.Size = new System.Drawing.Size(184, 22);
+            this.editToolStripMenuItem_Init.Text = "Edit";
+            this.editToolStripMenuItem_Init.Click += new System.EventHandler(this.editCharacterToolStripMenuItem_Click);
             // 
-            // DisableCharacterToolStripMenuItem
+            // disableToolStripMenuItem_Init
             // 
-            this.DisableCharacterToolStripMenuItem.Name = "DisableCharacterToolStripMenuItem";
-            this.DisableCharacterToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.DisableCharacterToolStripMenuItem.Text = "Toggle Enabled";
-            this.DisableCharacterToolStripMenuItem.Click += new System.EventHandler(this.DisableCharacterToolStripMenuItem_Click);
+            this.disableToolStripMenuItem_Init.Name = "disableToolStripMenuItem_Init";
+            this.disableToolStripMenuItem_Init.Size = new System.Drawing.Size(184, 22);
+            this.disableToolStripMenuItem_Init.Text = "Remove from Round";
+            this.disableToolStripMenuItem_Init.Click += new System.EventHandler(this.DisableCharacterToolStripMenuItem_Click);
             // 
             // spendPointsToolStripMenuItem
             // 
             this.spendPointsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem2,
-            this.toolStripMenuItem3,
-            this.toolStripMenuItem4,
-            this.toolStripMenuItem5});
+            this.toolStripMenuItem3});
             this.spendPointsToolStripMenuItem.Name = "spendPointsToolStripMenuItem";
-            this.spendPointsToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.spendPointsToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.spendPointsToolStripMenuItem.Text = "Spend Points";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(86, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem2.Text = "5";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(86, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem3.Text = "10";
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(86, 22);
-            this.toolStripMenuItem4.Text = "15";
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(86, 22);
-            this.toolStripMenuItem5.Text = "20";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // btnAdd
             // 
@@ -233,56 +220,56 @@
             // cmsCast
             // 
             this.cmsCast.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editToolStripMenuItem,
-            this.removeToolStripMenuItem,
-            this.removeToolStripMenuItem1,
-            this.reRollToolStripMenuItem,
-            this.setToolStripMenuItem,
-            this.disableToolStripMenuItem});
+            this.addToolStripMenuItem_Cast,
+            this.editToolStripMenuItem_Cast,
+            this.removeToolStripMenuItem_Cast,
+            this.reRollToolStripMenuItem_Cast,
+            this.setToolStripMenuItem_Cast,
+            this.disableToolStripMenuItem_Cast});
             this.cmsCast.Name = "cmsCast";
             this.cmsCast.Size = new System.Drawing.Size(156, 136);
             this.cmsCast.Opening += new System.ComponentModel.CancelEventHandler(this.cmsCast_Opening);
             // 
-            // editToolStripMenuItem
+            // addToolStripMenuItem_Cast
             // 
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.editToolStripMenuItem.Text = "Add";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            this.addToolStripMenuItem_Cast.Name = "addToolStripMenuItem_Cast";
+            this.addToolStripMenuItem_Cast.Size = new System.Drawing.Size(155, 22);
+            this.addToolStripMenuItem_Cast.Text = "Add";
+            this.addToolStripMenuItem_Cast.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
-            // removeToolStripMenuItem
+            // editToolStripMenuItem_Cast
             // 
-            this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.removeToolStripMenuItem.Text = "Edit";
-            this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
+            this.editToolStripMenuItem_Cast.Name = "editToolStripMenuItem_Cast";
+            this.editToolStripMenuItem_Cast.Size = new System.Drawing.Size(155, 22);
+            this.editToolStripMenuItem_Cast.Text = "Edit";
+            this.editToolStripMenuItem_Cast.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
             // 
-            // removeToolStripMenuItem1
+            // removeToolStripMenuItem_Cast
             // 
-            this.removeToolStripMenuItem1.Name = "removeToolStripMenuItem1";
-            this.removeToolStripMenuItem1.Size = new System.Drawing.Size(155, 22);
-            this.removeToolStripMenuItem1.Text = "Remove";
-            this.removeToolStripMenuItem1.Click += new System.EventHandler(this.removeToolStripMenuItem1_Click);
+            this.removeToolStripMenuItem_Cast.Name = "removeToolStripMenuItem_Cast";
+            this.removeToolStripMenuItem_Cast.Size = new System.Drawing.Size(155, 22);
+            this.removeToolStripMenuItem_Cast.Text = "Remove";
+            this.removeToolStripMenuItem_Cast.Click += new System.EventHandler(this.removeToolStripMenuItem1_Click);
             // 
-            // reRollToolStripMenuItem
+            // reRollToolStripMenuItem_Cast
             // 
-            this.reRollToolStripMenuItem.Name = "reRollToolStripMenuItem";
-            this.reRollToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.reRollToolStripMenuItem.Text = "Re-Roll";
-            this.reRollToolStripMenuItem.Click += new System.EventHandler(this.reRollToolStripMenuItem_Click);
+            this.reRollToolStripMenuItem_Cast.Name = "reRollToolStripMenuItem_Cast";
+            this.reRollToolStripMenuItem_Cast.Size = new System.Drawing.Size(155, 22);
+            this.reRollToolStripMenuItem_Cast.Text = "Re-Roll";
+            this.reRollToolStripMenuItem_Cast.Click += new System.EventHandler(this.reRollToolStripMenuItem_Click);
             // 
-            // setToolStripMenuItem
+            // setToolStripMenuItem_Cast
             // 
-            this.setToolStripMenuItem.Name = "setToolStripMenuItem";
-            this.setToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.setToolStripMenuItem.Text = "Set";
-            this.setToolStripMenuItem.Click += new System.EventHandler(this.setToolStripMenuItem_Click);
+            this.setToolStripMenuItem_Cast.Name = "setToolStripMenuItem_Cast";
+            this.setToolStripMenuItem_Cast.Size = new System.Drawing.Size(155, 22);
+            this.setToolStripMenuItem_Cast.Text = "Set";
+            this.setToolStripMenuItem_Cast.Click += new System.EventHandler(this.setToolStripMenuItem_Click);
             // 
-            // disableToolStripMenuItem
+            // disableToolStripMenuItem_Cast
             // 
-            this.disableToolStripMenuItem.Name = "disableToolStripMenuItem";
-            this.disableToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.disableToolStripMenuItem.Text = "Toggle Enabled";
+            this.disableToolStripMenuItem_Cast.Name = "disableToolStripMenuItem_Cast";
+            this.disableToolStripMenuItem_Cast.Size = new System.Drawing.Size(155, 22);
+            this.disableToolStripMenuItem_Cast.Text = "Toggle Enabled";
             // 
             // btnRealDice
             // 
@@ -556,6 +543,20 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // generateDebugCastToolStripMenuItem
+            // 
+            this.generateDebugCastToolStripMenuItem.Name = "generateDebugCastToolStripMenuItem";
+            this.generateDebugCastToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.generateDebugCastToolStripMenuItem.Text = "Generate Debug Cast";
+            this.generateDebugCastToolStripMenuItem.Click += new System.EventHandler(this.generateDebugCastToolStripMenuItem_Click);
+            // 
+            // setToolStripMenuItem
+            // 
+            this.setToolStripMenuItem.Name = "setToolStripMenuItem";
+            this.setToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.setToolStripMenuItem.Text = "Set";
+            this.setToolStripMenuItem.Click += new System.EventHandler(this.setToolStripMenuItem_Click_1);
+            // 
             // clstInitiative
             // 
             this.clstInitiative.ContextMenuStrip = this.cmsInitiative;
@@ -567,13 +568,6 @@
             this.clstInitiative.Size = new System.Drawing.Size(191, 199);
             this.clstInitiative.TabIndex = 0;
             this.clstInitiative.SelectedIndexChanged += new System.EventHandler(this.clstInitiative_SelectedIndexChanged);
-            // 
-            // generateDebugCastToolStripMenuItem
-            // 
-            this.generateDebugCastToolStripMenuItem.Name = "generateDebugCastToolStripMenuItem";
-            this.generateDebugCastToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.generateDebugCastToolStripMenuItem.Text = "Generate Debug Cast";
-            this.generateDebugCastToolStripMenuItem.Click += new System.EventHandler(this.generateDebugCastToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -644,19 +638,17 @@
         private System.Windows.Forms.Button btnSetRound;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ContextMenuStrip cmsInitiative;
-        private System.Windows.Forms.ToolStripMenuItem editCharacterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem_Init;
         private System.Windows.Forms.ContextMenuStrip cmsCast;
-        private System.Windows.Forms.ToolStripMenuItem DisableCharacterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem disableToolStripMenuItem_Init;
         private System.Windows.Forms.ToolStripMenuItem spendPointsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem reRollToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem setToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem_Cast;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem_Cast;
+        private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem_Cast;
+        private System.Windows.Forms.ToolStripMenuItem reRollToolStripMenuItem_Cast;
+        private System.Windows.Forms.ToolStripMenuItem setToolStripMenuItem_Cast;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem1;
@@ -672,7 +664,7 @@
         private System.Windows.Forms.CheckBox chbIgnorePass;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem disableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem disableToolStripMenuItem_Cast;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
@@ -681,6 +673,7 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem generateDebugCastToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setToolStripMenuItem;
     }
 }
 
